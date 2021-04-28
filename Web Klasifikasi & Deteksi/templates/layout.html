@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Layout</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+	<style>
+        table {
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body >
+<div>
+	<header>
+		<div class="container">
+		<h2 style="text-align: center">Klasifikasi Kasus Demam Berdarah dan Deteksi Lokasi Kasus Demam Berdarah</h2>
+		
+	</div>
+	</header>
+
+	<div class="ml-container" style="text-align: center">
+	
+	<table style="text-align: center">
+	<thead>
+	<tr>
+	<td>Tweet</td>
+	<td>Prediksi</td>
+	<td>Lokasi</td>
+	</tr>
+	</thead>
+	<tbody>
+	{% for row in dbd %}
+	<tr>
+	<td>{{ row.0 }}</td>
+	<td>{{ row.1 }}</td>
+	<td>{{ row.2 }}</td>
+	</tr>
+	{% else %}
+	<tr>
+	<td colspan="2">Unbelievable. No entries here so far</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+	</table>
+		
+	</div>
+
+</div>
+	
+
+</body>
+</html>
