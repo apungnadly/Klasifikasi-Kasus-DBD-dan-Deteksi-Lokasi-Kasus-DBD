@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Peta Persebaran Kasus Demam Berdarah</title>
+<header>
+		<div class="container">
+		<h2 style="text-align: center">Persebaran Demam Berdarah di Indonesia</h2>
+		
+	</div>
+	</header>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN7j8UiIgG5TslDq7RJLPhmXa_nQtobSI&callback=initialize" async defer></script>
+<script type="text/javascript">
+function initialize() {
+	var propertiPeta = {
+		center: new google.maps.LatLng(-1.605328,117.451067),
+		zoom:4.5,
+		mapTypeId:google.maps.MapTypeId.ROADMAP
+	};	
+  
+	var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
+	
+	{% for row in locations %}
+	lat = {{ row.0 }}
+	lng = {{ row.1 }}
+	var marker=new google.maps.Marker({
+		position: new google.maps.LatLng (lat, lng),
+		map: peta
+	});
+	{% endfor %}
+}
+
+
+</script>  
+</head>
+<body>
+
+<div id="googleMap" style="width: 100%; height: 400px"></div>
+
+
+
+</body>
+</html>
